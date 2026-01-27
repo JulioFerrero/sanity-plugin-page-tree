@@ -69,6 +69,12 @@ export type PageTreeConfig = {
   };
   /* An optional filter appended to the usePageTree groq query. Useful for removing pages based on data. */
   filter?: string;
+  /**
+   * Function to get initial values for new documents.
+   * Called when creating pages via the tree UI.
+   * @returns Object with initial field values (e.g., { appName: "vida" })
+   */
+  getInitialValues?: () => Record<string, unknown>;
 };
 
 /**

@@ -118,9 +118,11 @@ export const PageTreeEditor = ({
   );
 
   const addRootPage = useCallback(async () => {
+    const initialValues = config.getInitialValues?.() ?? {};
     const doc = await client.create({
       _id: generateDraftId(),
       _type: config.rootSchemaType,
+      ...initialValues,
     });
     const path = resolveIntentLink('edit', { id: doc._id, type: doc._type });
 
