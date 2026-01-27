@@ -9,6 +9,7 @@ import { PageTreeConfig, RawPageMetadata } from '../types';
 export const usePageTree = (config: PageTreeConfig) => {
   const { data, loading } = useListeningQuery(getAllRawPageMetadataQuery(config), {
     options: { apiVersion },
+    initialValue: null,
   });
 
   const pagesData = Array.isArray(data) ? (data as RawPageMetadata[]) : undefined;

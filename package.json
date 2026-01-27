@@ -1,11 +1,12 @@
 {
   "name": "@julioferrero/sanity-plugin-page-tree",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "description": "A Sanity plugin to make managing nested pages in a tree easier",
   "keywords": [
     "sanity",
     "sanity-plugin"
   ],
+  "type": "module",
   "license": "MIT",
   "author": "Djovanni Tehubijuluw <djovanni@q42.nl>",
   "contributors": [
@@ -25,33 +26,32 @@
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "import": "./dist/index.cjs.mjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.cjs.mjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     },
     "./client": {
       "source": "./src/client.ts",
-      "import": "./dist/client.cjs.mjs",
-      "require": "./dist/client.js",
-      "default": "./dist/client.cjs.mjs"
+      "import": "./dist/client.js",
+      "require": "./dist/client.cjs",
+      "default": "./dist/client.js"
     },
     "./next": {
       "source": "./src/next.ts",
-      "import": "./dist/next.cjs.mjs",
-      "require": "./dist/next.js",
-      "default": "./dist/next.cjs.mjs"
+      "import": "./dist/next.js",
+      "require": "./dist/next.cjs",
+      "default": "./dist/next.js"
     },
     "./presentation-mode": {
       "source": "./src/presentation-mode.ts",
-      "import": "./dist/presentation-mode.cjs.mjs",
-      "require": "./dist/presentation-mode.js",
-      "default": "./dist/presentation-mode.cjs.mjs"
+      "import": "./dist/presentation-mode.js",
+      "require": "./dist/presentation-mode.cjs",
+      "default": "./dist/presentation-mode.js"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.cjs.mjs",
-  
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -63,7 +63,7 @@
   "sideEffects": false,
   "browserslist": "extends @sanity/browserslist-config",
   "scripts": {
-    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --clean",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
     "clean": "rimraf dist",
     "test": "TZ=UTC vitest run",
     "test:watch": "TZ=UTC vitest",
@@ -76,42 +76,39 @@
     "tsc:watch": "tsc --noEmit --watch",
     "prepare": "npm run build"
   },
-  "type": "commonjs",
   "dependencies": {
-    "@sanity/icons": "3.7.4",
-    "@sanity/incompatible-plugin": "^1.0.5",
-    "@sanity/ui": "3.0.7",
-    "@sanity/uuid": "3.0.2",
-    "lodash": "4.17.21",
-    "next-sanity": "10.0.12",
-    "rxjs": "7.8.2",
-    "sanity-plugin-utils": "1.6.8"
+    "@sanity/icons": "^3.7.4",
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "^3.1.11",
+    "@sanity/uuid": "^3.0.2",
+    "lodash": "^4.17.21",
+    "next-sanity": "^11.6.10",
+    "rxjs": "^7.8.2",
+    "sanity-plugin-utils": "^1.7.0"
   },
   "devDependencies": {
-    "@sanity/pkg-utils": "7.11.9",
-    "@sanity/plugin-kit": "4.0.19",
-    "@types/lodash": "4.17.20",
-    "@types/react": "19.1.10",
-    "@types/styled-components": "5.1.34",
-    "@typescript-eslint/eslint-plugin": "8.39.1",
-    "@typescript-eslint/parser": "8.39.1",
-    "@vitejs/plugin-react": "5.0.0",
-    "eslint": "9.33.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-config-sanity": "7.1.4",
-    "eslint-plugin-prettier": "5.5.4",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "npm-run-all": "4.1.5",
-    "prettier": "3.6.2",
-    "prettier-plugin-packagejson": "2.5.19",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "react-is": "19.1.1",
-    "rimraf": "6.0.1",
-    "sanity": "4.4.1",
-    "typescript": "5.9.2",
-    "vitest": "3.2.4"
+    "@sanity/pkg-utils": "^10.1.2",
+    "@sanity/plugin-kit": "^4.0.20",
+    "@types/lodash": "^4.14.202",
+    "@types/react": "^18.2.42",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-sanity": "^7.0.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.1.0",
+    "prettier-plugin-packagejson": "^2.4.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
+    "sanity": "^4.20.3",
+    "typescript": "^5.3.3",
+    "vitest": "^2.0.2"
   },
   "peerDependencies": {
     "react": "^18 || ^19",
