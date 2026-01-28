@@ -1,13 +1,21 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 export const useOptimisticState = <S>(state: S): [S, Dispatch<SetStateAction<S | null>>] => {
   const [optimisticState, setOptimisticState] = useState<S | null>(null);
 
-  useEffect(() => {
-    if (optimisticState === state) {
-      setOptimisticState(null);
-    }
-  }, [state, optimisticState]);
+  const setOptimistic: Dispatch<SetStateAction<S | null>> = update => {
+    setOptimisticState(prev => {
+      const next = typeof update === 'function' ? (update as (prev: S | null) => S | null)(prev) : update;
 
-  return [optimisticState ?? state, setOptimisticState];
+      if (next === state) {
+        return null;
+      }
+
+      return next;
+    });
+  };
+
+  const resolvedState = optimisticState ?? state;
+
+  return [resolvedState, setOptimistic];
 };

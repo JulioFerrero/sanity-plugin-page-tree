@@ -12,9 +12,7 @@ export type SlugFieldProps = {
 export const SlugField = (props: SlugFieldProps) => {
   const id = useFormValue(['_id']);
   const type = useFormValue(['_type']);
-  // eslint-disable-next-line no-warning-comments
   // TODO ideally this would be more type safe.
-
   const parentRef = useFormValue(['parent']) as Reference | undefined;
   const { config, value, renderDefault } = props;
   return (
