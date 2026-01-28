@@ -39,7 +39,7 @@ export const PageTreeEditor = ({
 }: PageTreeEditorProps) => {
   const config = usePageTreeConfig();
   const client = useClient({ apiVersion });
-  const { navigateUrl, resolveIntentLink } = useRouter();
+  const { navigateUrl } = useRouter();
 
   const [pageTreeState, setPageTreeState] = useState<PageTreeState>(() => {
     const sessionState = JSON.parse(sessionStorage.getItem(PAGE_TREE_STATE_KEY) || '{}');
@@ -118,14 +118,16 @@ export const PageTreeEditor = ({
   );
 
   const addRootPage = useCallback(async () => {
+    const initialValues = config.initialValue ?? {};
     const doc = await client.create({
       _id: generateDraftId(),
       _type: config.rootSchemaType,
+      ...initialValues,
     });
-    const path = resolveIntentLink('edit', { id: doc._id, type: doc._type });
-
-    navigateUrl({ path });
-  }, [client, config.rootSchemaType, resolveIntentLink, navigateUrl]);
+    const currentPath = window.location.pathname;
+    const childSegment = `${doc._id},type=${doc._type}`;
+    navigateUrl({ path: `${currentPath};${childSegment}` });
+  }, [client, navigateUrl, config]);
 
   return (
     <Flex gap={3} direction="column">
