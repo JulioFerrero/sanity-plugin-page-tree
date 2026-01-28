@@ -53,7 +53,11 @@ export const PageTreeViewItem = ({
   const onItemClick = () => {
     if (isDisabled) return;
 
-    onClick ? onClick(page) : openPage();
+    if (onClick) {
+      onClick(page);
+    } else {
+      openPage();
+    }
   };
 
   const openPage = () => {
