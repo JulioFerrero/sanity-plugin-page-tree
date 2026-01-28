@@ -3,6 +3,7 @@ import { Button, Card, Flex, Stack, Text } from '@sanity/ui';
 import { Theme } from '@sanity/ui/theme';
 import { MouseEvent } from 'react';
 import { useMemo, useState } from 'react';
+import { useRouter } from 'sanity/router';
 import { usePaneRouter } from 'sanity/structure';
 import styled from 'styled-components';
 
@@ -39,7 +40,8 @@ export const PageTreeViewItem = ({
   hideActions,
 }: PageTreeViewItemProps) => {
   const config = usePageTreeConfig();
-  const { navigateIntent, routerPanesState, groupIndex } = usePaneRouter();
+  const { routerPanesState, groupIndex } = usePaneRouter();
+  const { navigateUrl } = useRouter();
 
   const [isHovered, setIsHovered] = useState(false);
   const [hasActionOpen, setHasActionOpen] = useState(false);
@@ -55,7 +57,12 @@ export const PageTreeViewItem = ({
   };
 
   const openPage = () => {
-    navigateIntent('edit', { id: page._id, type: page._type });
+    const currentPath = window.location.pathname;
+    const childSegment = `${page._id},type=${page._type}`;
+    // Keep pane segments up to the current pane, then add/replace the child pane
+    const segments = currentPath.split(';');
+    const newPath = [...segments.slice(0, groupIndex + 1), childSegment].join(';');
+    navigateUrl({ path: newPath });
   };
 
   const path = parentPath ? `${parentPath}/${page.slug?.current}` : (getLanguageFieldName(config) ?? '/');
