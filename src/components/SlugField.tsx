@@ -44,7 +44,7 @@ const UrlExplanation = ({ id, type, parentId, value, config }: UrlExplanationPro
 
   if (isLoading) return null;
 
-  const path = page?.path == '/' ? `${page?.path}${value?.current}` : `${page?.path}/${value?.current}`;
+  const path = page?.path == '/' ? `${page?.path}${value?.current ?? ''}` : `${page?.path}/${value?.current ?? ''}`;
 
   if (!config.baseUrl) {
     return (

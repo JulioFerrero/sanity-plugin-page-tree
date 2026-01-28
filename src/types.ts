@@ -69,6 +69,8 @@ export type PageTreeConfig = {
   };
   /* An optional filter appended to the usePageTree groq query. Useful for removing pages based on data. */
   filter?: string;
+  /** Initial values for new documents created via the tree UI, e.g. { language: "en" } */
+  initialValue?: Record<string, unknown>;
 };
 
 /**

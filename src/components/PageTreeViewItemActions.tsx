@@ -20,11 +20,12 @@ export const PageTreeViewItemActions = ({ page, onActionOpen, onActionClose }: P
   const schema = useSchema();
   const config = usePageTreeConfig();
   const client = useClient({ apiVersion });
-  const { navigateUrl, resolveIntentLink } = useRouter();
+  const { navigateUrl } = useRouter();
   const [newPage, setNewPage] = useState<{ _id: string; _type: string } | undefined>();
 
   const onAdd = async (type: string) => {
     const language = config.documentInternationalization ? getLanguageFieldName(config) : undefined;
+    const initialValues = config.initialValue ?? {};
 
     const doc = await client.create({
       _id: generateDraftId(),
@@ -39,16 +40,19 @@ export const PageTreeViewItemActions = ({ page, onActionOpen, onActionClose }: P
               _strengthenOnPublish: { type: page._type },
             },
       ...(language ? { [language]: page[language] } : {}),
+      ...initialValues,
     });
     setNewPage(doc);
   };
 
   useEffect(() => {
     if (newPage) {
-      const path = resolveIntentLink('edit', { id: newPage._id, type: newPage._type });
-      navigateUrl({ path });
+      const currentPath = window.location.pathname;
+      const childSegment = `${newPage._id},type=${newPage._type}`;
+      const newPath = `${currentPath};${childSegment}`;
+      navigateUrl({ path: newPath });
     }
-  }, [newPage, navigateUrl, resolveIntentLink]);
+  }, [newPage, navigateUrl]);
 
   const menuButtons = config.pageSchemaTypes
     .filter(
