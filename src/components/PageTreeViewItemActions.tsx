@@ -25,7 +25,7 @@ export const PageTreeViewItemActions = ({ page, onActionOpen, onActionClose }: P
 
   const onAdd = async (type: string) => {
     const language = config.documentInternationalization ? getLanguageFieldName(config) : undefined;
-    const initialValues = config.getInitialValues?.() ?? {};
+    const initialValues = config.initialValue ?? {};
 
     const doc = await client.create({
       _id: generateDraftId(),

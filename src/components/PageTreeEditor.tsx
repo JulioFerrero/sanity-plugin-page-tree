@@ -118,7 +118,7 @@ export const PageTreeEditor = ({
   );
 
   const addRootPage = useCallback(async () => {
-    const initialValues = config.getInitialValues?.() ?? {};
+    const initialValues = config.initialValue ?? {};
     const doc = await client.create({
       _id: generateDraftId(),
       _type: config.rootSchemaType,
