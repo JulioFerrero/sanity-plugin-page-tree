@@ -22,7 +22,7 @@ export const PageTreeViewItemStatus = ({ isPublished, isDraft }: PageTreeViewIte
         content={
           <Box padding={2}>
             <Text muted size={1}>
-              {isPublished ? 'Published' : 'Not published'}
+              {isPublished ? 'Publicado' : 'No publicado'}
             </Text>
           </Box>
         }
@@ -35,7 +35,7 @@ export const PageTreeViewItemStatus = ({ isPublished, isDraft }: PageTreeViewIte
         content={
           <Box padding={2}>
             <Text muted size={1}>
-              {isDraft ? 'Edited' : 'No unpublished edits'}
+              {isDraft ? 'Editado' : 'Sin ediciones sin publicar'}
             </Text>
           </Box>
         }

@@ -47,7 +47,7 @@ const UrlExplanation = ({ id, type, parentId, value, config }: UrlExplanationPro
   if (!config.baseUrl) {
     return (
       <Text muted size={1}>
-        Page url: {path}
+        URL de la página: {path}
       </Text>
     );
   }
@@ -55,14 +55,16 @@ const UrlExplanation = ({ id, type, parentId, value, config }: UrlExplanationPro
   const url = `${config.baseUrl}${path}`;
 
   if (!isPublished) {
-    <Text muted size={1}>
-      Page url once published: {url}
-    </Text>;
+    return (
+      <Text muted size={1}>
+        URL de la página cuando se publique: {url}
+      </Text>
+    );
   }
 
   return (
     <Text muted size={1}>
-      Link to page:
+      Enlace a la página:
       <a href={url} target="blank">
         {url}
       </a>

@@ -49,7 +49,7 @@ const basePageFields = (config: PageTreeConfig, options: Options, ownType: Docum
     ? [
         defineField({
           name: 'slug',
-          title: 'Slug',
+          title: 'URL amigable',
           type: 'slug',
           options: {
             source: getSlugSourceField(config, options),
@@ -67,7 +67,7 @@ const basePageFields = (config: PageTreeConfig, options: Options, ownType: Docum
     ? [
         defineField({
           name: 'parent',
-          title: 'Parent page',
+          title: 'Página padre',
           type: 'reference',
           to: getPossibleParentsFromConfig(config, ownType).map(type => ({ type })),
           validation: Rule => Rule.required().custom(parentValidator(config, ownType.name)),
