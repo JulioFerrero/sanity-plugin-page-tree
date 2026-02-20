@@ -36,7 +36,7 @@ const allowedParentValidator = (selectedParent: RawPageMetadata, config: PageTre
   }
 
   if (!allowedParents.includes(selectedParent._type)) {
-    return `The parent of type "${selectedParent._type}" is not allowed for this type of document.`;
+    return `El padre de tipo "${selectedParent._type}" no está permitido para este tipo de documento.`;
   }
 
   return true;
@@ -53,7 +53,7 @@ const parentLanguageValidator = (
     const parentLanguage = selectedParent?.[languageFieldName];
 
     if (language !== parentLanguage) {
-      return 'The language of the parent must match the language of the document.';
+      return 'El idioma del padre debe coincidir con el idioma del documento.';
     }
   }
 
