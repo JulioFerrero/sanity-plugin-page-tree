@@ -37,8 +37,8 @@ export const slugValidator =
       );
 
       return siblingDraftPageWithSameSlug
-        ? `Slug must be unique. Another page with the same slug is already published, but has a draft version with a  different slug: "${siblingDraftPageWithSameSlug.slug?.current}". Publish that page first or change the slug to something else.`
-        : 'Slug must be unique.';
+        ? `El slug debe ser único. Otra página con el mismo slug ya está publicada, pero tiene una versión borrador con un slug diferente: "${siblingDraftPageWithSameSlug.slug?.current}". Publica esa página primero o cambia el slug.`
+        : 'El slug debe ser único.';
     }
 
     return true;

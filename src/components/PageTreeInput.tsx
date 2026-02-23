@@ -93,11 +93,11 @@ export const PageTreeInput = (
           <Card padding={1} shadow={1} radius={2}>
             <Flex>
               <SelectedItemCard padding={3} radius={2} onClick={openDialog} flex={1}>
-                <Text size={2}>{parentId ? (parentPath ?? 'Select page') : 'Select page'}</Text>
+                <Text size={2}>{parentId ? (parentPath ?? 'Selecciona una página') : 'Selecciona una página'}</Text>
               </SelectedItemCard>
               {parentId && (
                 <Box marginLeft={2}>
-                  <Button mode="ghost" padding={3} text="Remove" onClick={resetValue} />
+                  <Button mode="ghost" padding={3} text="Eliminar" onClick={resetValue} />
                 </Box>
               )}
             </Flex>
@@ -106,7 +106,7 @@ export const PageTreeInput = (
       </Stack>
       {pageTree && isPageTreeDialogOpen && (
         <Dialog
-          header={'Select page'}
+          header={'Selecciona una página'}
           id="parent-page-tree"
           zOffset={1000}
           width={1}

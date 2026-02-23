@@ -135,7 +135,7 @@ export const PageTreeEditor = ({
         <TextInput
           icon={SearchIcon}
           onChange={event => setPageTreeState({ ...pageTreeState, query: event.currentTarget.value })}
-          placeholder="Search"
+          placeholder="Buscar"
           value={pageTreeState.query}
         />
       </Box>
@@ -159,10 +159,10 @@ export const PageTreeEditor = ({
       ) : (
         <>
           <Box paddingX={3} paddingY={3}>
-            <Text>No pages found</Text>
+            <Text>No se encontraron páginas</Text>
           </Box>
           {!hideActions && pageTree.length == 0 && (
-            <AddButton mode="ghost" icon={AddIcon} text="Add root page" onClick={addRootPage} />
+            <AddButton mode="ghost" icon={AddIcon} text="Agregar página principal" onClick={addRootPage} />
           )}
         </>
       )}

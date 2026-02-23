@@ -68,7 +68,7 @@ export const PageTreeViewItemActions = ({ page, onActionOpen, onActionClose }: P
   const tooltipContent = isAddPageButtonDisabled ? (
     <Box padding={1}>
       <Text muted size={1}>
-        This page cannot have any child pages.
+        Esta página no puede tener páginas hijas.
       </Text>
     </Box>
   ) : undefined;
