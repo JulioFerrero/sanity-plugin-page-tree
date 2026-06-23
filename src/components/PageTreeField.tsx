@@ -21,7 +21,7 @@ export const PageTreeField = (
   };
 
   return (
-    <FormField title={props.title} inputId={props.inputId} validation={props.validation}>
+    <FormField title={props.title} inputId={props.inputId} validation={props.validation} path={props.path}>
       <PageTreeInput {...inputProps} hideActions />
     </FormField>
   );
