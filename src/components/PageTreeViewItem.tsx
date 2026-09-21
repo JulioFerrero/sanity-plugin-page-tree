@@ -141,7 +141,7 @@ export const PageTreeViewItem = ({
           <ChildContainer>
             <VerticalLine />
             {hasChildren && (
-              <Stack paddingY={1} space={2}>
+              <Stack paddingY={1} gap={2}>
                 {page.children.map(childPage => (
                   <PageTreeViewItem
                     key={childPage._id}
